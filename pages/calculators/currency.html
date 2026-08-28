@@ -1,1 +1,71 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Convert an amount in KWD using an exchange rate you enter from a source you trust."><title>KWD Currency Converter | KuwaitWise</title><link rel="stylesheet" href="../../assets/css/style.css"></head><body><header><div class="top">🇰🇼 Practical guides, calculators & comparisons for Kuwait</div><div class="nav"><a class="logo" href="../../index.html"><b>K</b> Kuwait<span>Wise</span></a><button id="menu">☰</button><nav id="links"><a href="../../index.html">Home</a><a href="../calculators.html">Calculators</a><a href="../guides.html">Guides</a><a href="../compare.html">Compare</a><a href="../about.html">About</a></nav></div></header><main><section class="toolhero"><div class="wrap"><p class="eyebrow" style="color:#9fd0f5">KUWAITWISE CALCULATOR</p><h1>KWD Currency Converter</h1><p>Convert an amount in KWD using an exchange rate you enter from a source you trust.</p></div></section><div class="toolpage"><div class="breadcrumbs"><a href="../../index.html">Home</a> / <a href="../calculators.html">Calculators</a> / KWD Currency Converter</div><div class="toolbox"><div class="notice">Exchange rates change. Enter a current rate from a bank, official provider or trusted financial source before making a transaction.</div><article class="card"><h2>Convert KWD using your rate</h2><label>Amount in KWD<input id="amount" type="number" min="0" step="0.01" placeholder="100"></label><label>Target currency units for 1 KWD<input id="fxrate" type="number" min="0" step="0.000001" placeholder="3.25"></label><button id="currencyCalc">Convert amount</button><div class="result" id="currencyResult">Enter an amount and rate to convert.</div></article><div class="related"><h2>Related tools</h2><a href="monthly-budget.html">Monthly Budget Planner →</a><a href="rent.html">Rent Affordability →</a><a href="savings.html">Savings Goal Calculator →</a></div></div></div></main><footer><div class="logo"><b>K</b> Kuwait<span>Wise</span></div><p>Independent practical guides and planning tools for life in Kuwait.</p><small>© 2026 KuwaitWise. General guidance only; verify important decisions with official sources or qualified professionals.</small><p><a href="../privacy.html">Privacy</a> · <a href="../contact.html">Contact</a> · <a href="../disclaimer.html">Disclaimer</a></p></footer><script src="../../assets/js/app.js"></script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="KuwaitWise currency converter for popular currencies used by Kuwait residents and newcomers.">
+<title>Currency Converter | KuwaitWise</title>
+<link rel="stylesheet" href="../../assets/css/style.css">
+<style>
+.currency-tool{max-width:860px;margin:0 auto}.converter-card{padding:30px}.converter-top{text-align:center;margin-bottom:22px}.converter-top h2{font-size:34px;margin-bottom:6px}.converter-top p{margin:0;color:var(--muted)}.rate-line{display:inline-flex;align-items:center;gap:8px;background:#edf8fb;border:1px solid #d7eaef;padding:8px 13px;border-radius:999px;font-weight:800;font-size:14px;margin-top:13px}.converter-grid{display:grid;grid-template-columns:1fr auto 1fr;gap:14px;align-items:end}.field-title{display:block;font-weight:800;font-size:14px;margin-bottom:7px}.currency-field{display:grid;grid-template-columns:1fr 1fr;gap:9px}.currency-field input,.currency-field select{width:100%;padding:14px 13px;border:1px solid #cbd7df;border-radius:12px;font:inherit;background:#fbfdff;color:var(--ink);outline:none;font-weight:700}.currency-field input:focus,.currency-field select:focus{border-color:var(--blue);box-shadow:0 0 0 4px rgba(23,105,170,.09)}.swap{width:48px!important;height:48px;padding:0!important;border-radius:50%!important;margin-bottom:0!important;font-size:21px;background:linear-gradient(135deg,#4fd1c5,#1769aa)!important}.result-box{margin-top:24px;padding:23px;border-radius:18px;background:linear-gradient(135deg,#0d2a43,#1769aa);color:#fff;text-align:center;box-shadow:0 15px 35px rgba(23,105,170,.22)}.result-label{font-size:12px;letter-spacing:1.6px;font-weight:800;opacity:.75}.result-number{font-family:Manrope,sans-serif;font-size:clamp(28px,5vw,46px);line-height:1.1;margin:8px 0;font-weight:800}.result-sub{color:#d9edf8;font-size:14px}.quick-card{margin-top:24px}.quick-card h3{font-family:Manrope,sans-serif;font-size:24px;margin:0 0 5px}.quick-card p{color:var(--muted);margin-top:0}.quick-table{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:16px}.quick-item{border:1px solid var(--line);background:#fff;padding:13px;border-radius:13px}.quick-item span{display:block;font-size:13px;color:var(--muted);font-weight:700}.quick-item b{display:block;margin-top:2px;font-size:17px}.currency-note{margin-top:20px;padding:14px 16px;border-radius:13px;background:#fff8e6;border:1px solid #f0df9d;color:#6a5311;font-size:14px}.popular{display:flex;flex-wrap:wrap;gap:8px;margin-top:13px}.popular button{width:auto!important;margin:0!important;padding:9px 12px!important;font-size:13px;box-shadow:none}.popular button:hover{transform:translateY(-1px)}.currency-footer-note{font-size:13px;color:var(--muted);text-align:center;margin-top:14px}
+@media(max-width:700px){.converter-card{padding:21px}.converter-grid{grid-template-columns:1fr;gap:12px}.swap{margin:0 auto!important;transform:rotate(90deg)}.quick-table{grid-template-columns:repeat(2,1fr)}.currency-field{grid-template-columns:1fr}.converter-top h2{font-size:29px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="top">🇰🇼 Practical guides, calculators & comparisons for Kuwait</div>
+  <div class="nav"><a class="logo" href="../../index.html"><b>K</b> Kuwait<span>Wise</span></a><button id="menu">☰</button><nav id="links"><a href="../../index.html">Home</a><a href="../calculators.html">Calculators</a><a href="../guides.html">Guides</a><a href="../compare.html">Compare</a><a href="../about.html">About</a></nav></div>
+</header>
+<main>
+<section class="toolhero"><div class="wrap"><p class="eyebrow" style="color:#9fd0f5">FREE TOOL</p><h1>Currency Converter</h1><p>Convert between KWD and popular currencies used by Kuwait residents, families and newcomers.</p></div></section>
+<div class="toolpage"><div class="breadcrumbs"><a href="../../index.html">Home</a> / <a href="../calculators.html">Calculators</a> / Currency Converter</div>
+<div class="toolbox currency-tool">
+  <div class="notice">This calculator uses reference exchange rates for planning. Rates can change, so verify the final rate with your bank or official provider before sending or exchanging money.</div>
+  <article class="card converter-card">
+    <div class="converter-top"><h2>Convert your currency</h2><p>Choose the countries or currencies you want to convert between.</p><div class="rate-line" id="pairRate">1 KWD = 311.59 INR</div></div>
+    <div class="converter-grid">
+      <div><label class="field-title" for="amount">Amount</label><div class="currency-field"><input id="amount" type="number" min="0" step="0.01" value="1"><select id="fromCurrency" aria-label="From currency"></select></div></div>
+      <button class="swap" id="swapCurrencies" type="button" aria-label="Swap currencies">⇅</button>
+      <div><label class="field-title" for="toCurrency">Converted to</label><div class="currency-field"><input id="convertedAmount" type="text" readonly><select id="toCurrency" aria-label="To currency"></select></div></div>
+    </div>
+    <div class="result-box"><div class="result-label">CONVERSION RESULT</div><div class="result-number" id="resultText">1 KWD = 311.59 INR</div><div class="result-sub" id="resultSub">Reference rate used for planning</div></div>
+    <div class="popular" aria-label="Popular target currencies"><button type="button" data-target="INR">🇮🇳 India INR</button><button type="button" data-target="USD">🇺🇸 USA USD</button><button type="button" data-target="AED">🇦🇪 UAE AED</button><button type="button" data-target="PHP">🇵🇭 Philippines PHP</button><button type="button" data-target="PKR">🇵🇰 Pakistan PKR</button><button type="button" data-target="BDT">🇧🇩 Bangladesh BDT</button></div>
+  </article>
+  <article class="card quick-card"><h3>Quick conversions</h3><p id="quickIntro">Popular amounts using the selected currency pair.</p><div class="quick-table" id="quickTable"></div></article>
+  <div class="currency-note"><b>Important:</b> These values are reference estimates, not guaranteed live exchange rates. Bank fees, transfer fees and provider margins can change the final amount you receive.</div>
+  <p class="currency-footer-note">Supported popular currencies can be expanded later with a live exchange-rate API.</p>
+  <div class="related"><h2>Related tools</h2><a href="monthly-budget.html">Monthly Budget Planner →</a><a href="rent.html">Rent Affordability →</a><a href="savings.html">Savings Goal Calculator →</a></div>
+</div></div>
+</main>
+<footer><div class="logo"><b>K</b> Kuwait<span>Wise</span></div><p>Independent practical guides and planning tools for life in Kuwait.</p><small>© 2026 KuwaitWise. General guidance only; verify important decisions with official sources or qualified professionals.</small><p><a href="../privacy.html">Privacy</a> · <a href="../contact.html">Contact</a> · <a href="../disclaimer.html">Disclaimer</a></p></footer>
+<script src="../../assets/js/app.js"></script>
+<script>
+const currencies=[
+ {code:'KWD',country:'🇰🇼 Kuwait',name:'Kuwaiti Dinar',rate:1},
+ {code:'INR',country:'🇮🇳 India',name:'Indian Rupee',rate:311.59},
+ {code:'USD',country:'🇺🇸 United States',name:'US Dollar',rate:3.25},
+ {code:'EUR',country:'🇪🇺 Eurozone',name:'Euro',rate:2.98},
+ {code:'GBP',country:'🇬🇧 United Kingdom',name:'Pound Sterling',rate:2.56},
+ {code:'AED',country:'🇦🇪 United Arab Emirates',name:'UAE Dirham',rate:11.94},
+ {code:'SAR',country:'🇸🇦 Saudi Arabia',name:'Saudi Riyal',rate:12.20},
+ {code:'QAR',country:'🇶🇦 Qatar',name:'Qatari Riyal',rate:11.83},
+ {code:'BHD',country:'🇧🇭 Bahrain',name:'Bahraini Dinar',rate:1.22},
+ {code:'OMR',country:'🇴🇲 Oman',name:'Omani Rial',rate:0.99},
+ {code:'PHP',country:'🇵🇭 Philippines',name:'Philippine Peso',rate:188.50},
+ {code:'PKR',country:'🇵🇰 Pakistan',name:'Pakistani Rupee',rate:906.00},
+ {code:'BDT',country:'🇧🇩 Bangladesh',name:'Bangladeshi Taka',rate:396.00},
+ {code:'NPR',country:'🇳🇵 Nepal',name:'Nepalese Rupee',rate:498.50},
+ {code:'EGP',country:'🇪🇬 Egypt',name:'Egyptian Pound',rate:154.00}
+];
+const el=id=>document.getElementById(id); const amountEl=el('amount'), fromEl=el('fromCurrency'), toEl=el('toCurrency'), convertedEl=el('convertedAmount');
+const fmt=(value,max=2)=>new Intl.NumberFormat('en-US',{maximumFractionDigits:max}).format(value);
+function populate(select){currencies.forEach(c=>{const o=document.createElement('option');o.value=c.code;o.textContent=`${c.country} — ${c.code} (${c.name})`;select.appendChild(o)})}
+populate(fromEl); populate(toEl); fromEl.value='KWD'; toEl.value='INR';
+function get(code){return currencies.find(c=>c.code===code)}
+function convert(){const amount=Math.max(0,Number(amountEl.value)||0), from=get(fromEl.value), to=get(toEl.value), pair=to.rate/from.rate, converted=amount*pair;convertedEl.value=fmt(converted,4);el('pairRate').textContent=`1 ${from.code} = ${fmt(pair,6)} ${to.code}`;el('resultText').textContent=`${fmt(amount,4)} ${from.code} = ${fmt(converted,4)} ${to.code}`;el('resultSub').textContent=`${from.name} → ${to.name} • reference rate for planning`;el('quickIntro').textContent=`Popular ${from.code} amounts converted to ${to.code}.`;const amounts=[1,5,10,50,100,500,1000];el('quickTable').innerHTML=amounts.map(v=>`<div class="quick-item"><span>${fmt(v)} ${from.code}</span><b>${fmt(v*pair,4)} ${to.code}</b></div>`).join('')}
+amountEl.addEventListener('input',convert);fromEl.addEventListener('change',convert);toEl.addEventListener('change',convert);
+el('swapCurrencies').addEventListener('click',()=>{const current=fromEl.value;fromEl.value=toEl.value;toEl.value=current;convert()});
+document.querySelectorAll('[data-target]').forEach(btn=>btn.addEventListener('click',()=>{toEl.value=btn.dataset.target;convert()}));
+convert();
+</script>
+</body></html>
