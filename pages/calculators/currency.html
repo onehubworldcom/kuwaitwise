@@ -12,15 +12,15 @@ header{height:94px;background:rgba(255,255,255,.86);border-bottom:1px solid #d8e
 nav a{margin-left:34px;text-decoration:none;color:#344555;font-weight:700;font-size:18px}
 .wrap{max-width:1120px;margin:0 auto;padding:34px 24px 60px}.card{max-width:1020px;margin:auto;background:rgba(255,255,255,.58);border:1px solid #d3dee7;border-radius:0 0 28px 28px;padding:36px 38px;box-shadow:0 15px 35px rgba(36,63,86,.09)}
 .rate-pill{display:table;margin:0 auto 42px;padding:13px 22px;border-radius:28px;background:#eaf3f7;border:1px solid #cedde6;font-weight:800}
-label{display:block;font-weight:800;letter-spacing:.3px;margin-bottom:12px;font-size:17px}.row{display:grid;grid-template-columns:1fr 260px;gap:12px;align-items:center}
-input,.currency-select{height:76px;border:1px solid #c7d5df;border-radius:17px;background:#f9fbfc;color:#304257;font-size:20px;padding:0 16px;box-shadow:0 9px 22px rgba(44,72,96,.08)}
+label{display:block;font-weight:800;letter-spacing:.3px;margin-bottom:12px;font-size:17px}.row{display:grid;grid-template-columns:minmax(0,1fr) minmax(290px,360px);gap:14px;align-items:center}
+input,.currency-select{height:76px;border:1px solid #c7d5df;border-radius:17px;background:#f9fbfc;color:#304257;font-size:18px;padding:0 16px;box-shadow:0 9px 22px rgba(44,72,96,.08)}
 input:focus,select:focus{outline:2px solid #8fcbd1}.currency-select{font-weight:800;cursor:pointer;width:100%}
 .swap{width:66px;height:66px;border:0;border-radius:50%;background:linear-gradient(135deg,#46b9bd,#24608e);color:#fff;font-size:30px;display:block;margin:14px auto 35px;cursor:pointer;box-shadow:0 12px 25px rgba(44,102,140,.25)}
 .result{margin-top:28px;background:linear-gradient(135deg,#17344f,#2f6697);border-radius:22px;padding:34px 20px;color:white;text-align:center;box-shadow:0 14px 28px rgba(24,57,84,.22)}
 .result small{font-weight:800;letter-spacing:3px;color:#cbd8e3}.result strong{display:block;font-size:56px;margin:17px 0 12px}.result p{margin:0;color:#d3e1eb;font-weight:700;font-size:16px}
 .quick{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.quick button{border:0;background:#315f8d;color:#fff;border-radius:15px;padding:14px 16px;font-weight:800;cursor:pointer}
 .note{margin-top:30px;padding:20px;border:1px solid #d3dee7;border-radius:18px;background:#fffaf0;color:#536373;line-height:1.6}
-@media(max-width:760px){header{height:auto;padding:14px 20px}.brand{font-size:23px}.logo{width:42px;height:42px}nav{display:none}.wrap{padding:18px 12px}.card{padding:24px 16px}.row{grid-template-columns:1fr 150px}.result strong{font-size:36px}}
+@media(max-width:760px){header{height:auto;padding:14px 20px}.brand{font-size:23px}.logo{width:42px;height:42px}nav{display:none}.wrap{padding:18px 12px}.card{padding:24px 16px}.row{grid-template-columns:1fr}.currency-select{width:100%;font-size:17px}.result strong{font-size:36px}}
 </style>
 </head>
 <body>
@@ -53,12 +53,12 @@ input:focus,select:focus{outline:2px solid #8fcbd1}.currency-select{font-weight:
   </div>
 
   <div class="quick">
-    <button type="button" data-code="INR">IN India INR</button>
-    <button type="button" data-code="USD">US USA USD</button>
-    <button type="button" data-code="AED">AE UAE AED</button>
-    <button type="button" data-code="PHP">PH Philippines PHP</button>
-    <button type="button" data-code="PKR">PK Pakistan PKR</button>
-    <button type="button" data-code="BDT">BD Bangladesh BDT</button>
+    <button type="button" data-code="INR">🇮🇳 India INR</button>
+    <button type="button" data-code="USD">🇺🇸 USA USD</button>
+    <button type="button" data-code="AED">🇦🇪 UAE AED</button>
+    <button type="button" data-code="PHP">🇵🇭 Philippines PHP</button>
+    <button type="button" data-code="PKR">🇵🇰 Pakistan PKR</button>
+    <button type="button" data-code="BDT">🇧🇩 Bangladesh BDT</button>
   </div>
 
   <div class="note"><b>Planning tool:</b> Rates below are reference values for demonstration and planning. Exchange rates change, so check a trusted bank or official provider before making a transaction.</div>
