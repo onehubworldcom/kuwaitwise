@@ -7,8 +7,61 @@
 <title>Currency Converter | KuwaitWise</title>
 <link rel="stylesheet" href="../../assets/css/style.css">
 <style>
-.currency-tool{max-width:860px;margin:0 auto}.converter-card{padding:30px}.converter-top{text-align:center;margin-bottom:22px}.converter-top h2{font-size:34px;margin-bottom:6px}.converter-top p{margin:0;color:var(--muted)}.rate-line{display:inline-flex;align-items:center;gap:8px;background:#edf8fb;border:1px solid #d7eaef;padding:8px 13px;border-radius:999px;font-weight:800;font-size:14px;margin-top:13px}.converter-grid{display:grid;grid-template-columns:1fr auto 1fr;gap:14px;align-items:end}.field-title{display:block;font-weight:800;font-size:14px;margin-bottom:7px}.currency-field{display:grid;grid-template-columns:1fr 1fr;gap:9px}.currency-field input,.currency-field select{width:100%;padding:14px 13px;border:1px solid #cbd7df;border-radius:12px;font:inherit;background:#fbfdff;color:var(--ink);outline:none;font-weight:700}.currency-field input:focus,.currency-field select:focus{border-color:var(--blue);box-shadow:0 0 0 4px rgba(23,105,170,.09)}.swap{width:48px!important;height:48px;padding:0!important;border-radius:50%!important;margin-bottom:0!important;font-size:21px;background:linear-gradient(135deg,#4fd1c5,#1769aa)!important}.result-box{margin-top:24px;padding:23px;border-radius:18px;background:linear-gradient(135deg,#0d2a43,#1769aa);color:#fff;text-align:center;box-shadow:0 15px 35px rgba(23,105,170,.22)}.result-label{font-size:12px;letter-spacing:1.6px;font-weight:800;opacity:.75}.result-number{font-family:Manrope,sans-serif;font-size:clamp(28px,5vw,46px);line-height:1.1;margin:8px 0;font-weight:800}.result-sub{color:#d9edf8;font-size:14px}.quick-card{margin-top:24px}.quick-card h3{font-family:Manrope,sans-serif;font-size:24px;margin:0 0 5px}.quick-card p{color:var(--muted);margin-top:0}.quick-table{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:16px}.quick-item{border:1px solid var(--line);background:#fff;padding:13px;border-radius:13px}.quick-item span{display:block;font-size:13px;color:var(--muted);font-weight:700}.quick-item b{display:block;margin-top:2px;font-size:17px}.currency-note{margin-top:20px;padding:14px 16px;border-radius:13px;background:#fff8e6;border:1px solid #f0df9d;color:#6a5311;font-size:14px}.popular{display:flex;flex-wrap:wrap;gap:8px;margin-top:13px}.popular button{width:auto!important;margin:0!important;padding:9px 12px!important;font-size:13px;box-shadow:none}.popular button:hover{transform:translateY(-1px)}.currency-footer-note{font-size:13px;color:var(--muted);text-align:center;margin-top:14px}
-@media(max-width:700px){.converter-card{padding:21px}.converter-grid{grid-template-columns:1fr;gap:12px}.swap{margin:0 auto!important;transform:rotate(90deg)}.quick-table{grid-template-columns:repeat(2,1fr)}.currency-field{grid-template-columns:1fr}.converter-top h2{font-size:29px}}
+.currency-tool{max-width:860px;margin:0 auto}
+.converter-card{padding:30px}
+.converter-top{text-align:center;margin-bottom:24px}
+.converter-top h2{font-size:34px;margin-bottom:6px}
+.converter-top p{margin:0;color:var(--muted)}
+.rate-line{display:inline-flex;align-items:center;gap:8px;background:#edf8fb;border:1px solid #d7eaef;padding:8px 13px;border-radius:999px;font-weight:800;font-size:14px;margin-top:13px}
+.converter-stack{display:grid;gap:14px;max-width:700px;margin:0 auto}
+.field-title{display:block;font-weight:800;font-size:14px;margin-bottom:7px}
+.amount-row{display:grid;grid-template-columns:minmax(0,1fr) 210px;gap:10px}
+.amount-input{width:100%;padding:17px 15px;border:1px solid #cbd7df;border-radius:13px;font:inherit;background:#fbfdff;color:var(--ink);outline:none;font-weight:800;font-size:18px;box-sizing:border-box}
+.amount-input:focus{border-color:var(--blue);box-shadow:0 0 0 4px rgba(23,105,170,.09)}
+.currency-picker{position:relative}
+.currency-trigger{width:100%;height:58px;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:0 15px;border:1px solid #cbd7df;border-radius:13px;background:#fbfdff;color:var(--ink);font:inherit;font-weight:800;cursor:pointer}
+.currency-trigger:hover{border-color:#8ba8ba}
+.currency-trigger .selected-left{display:flex;align-items:center;gap:10px;min-width:0}
+.currency-trigger .flag{font-size:24px;line-height:1}
+.currency-trigger .selected-name{font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.currency-trigger .code{font-size:18px}
+.chevron{font-size:18px;color:var(--muted)}
+.currency-menu{position:absolute;z-index:50;top:calc(100% + 8px);left:0;right:0;background:#fff;border:1px solid #d6e0e7;border-radius:16px;box-shadow:0 20px 50px rgba(13,42,67,.22);padding:10px;display:none}
+.currency-picker.open .currency-menu{display:block}
+.currency-search-wrap{position:relative;margin-bottom:8px}
+.currency-search{width:100%;box-sizing:border-box;padding:13px 14px 13px 42px;border:1px solid #b8c8d2;border-radius:11px;font:inherit;outline:none;background:#fbfdff}
+.currency-search:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(23,105,170,.08)}
+.search-icon{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--muted)}
+.currency-options{max-height:300px;overflow:auto;padding-right:2px}
+.currency-option{width:100%;display:flex;align-items:center;gap:11px;padding:11px 10px;border:0;background:transparent;border-radius:10px;text-align:left;cursor:pointer;font:inherit;color:var(--ink)}
+.currency-option:hover,.currency-option.active{background:#edf6fa}
+.currency-option .option-flag{font-size:23px;width:28px;text-align:center}
+.currency-option .option-code{font-weight:900;min-width:42px}
+.currency-option .option-name{color:var(--muted);font-size:14px}
+.swap-wrap{display:flex;justify-content:center;margin:-2px 0}
+.swap{width:52px!important;height:52px;padding:0!important;border-radius:50%!important;margin:0!important;font-size:22px;background:linear-gradient(135deg,#4fd1c5,#1769aa)!important;box-shadow:0 10px 22px rgba(23,105,170,.22)}
+.result-box{margin-top:24px;padding:25px;border-radius:18px;background:linear-gradient(135deg,#0d2a43,#1769aa);color:#fff;text-align:center;box-shadow:0 15px 35px rgba(23,105,170,.22)}
+.result-label{font-size:12px;letter-spacing:1.6px;font-weight:800;opacity:.75}
+.result-number{font-family:Manrope,sans-serif;font-size:clamp(28px,5vw,46px);line-height:1.1;margin:8px 0;font-weight:800}
+.result-sub{color:#d9edf8;font-size:14px}
+.quick-card{margin-top:24px}
+.quick-card h3{font-family:Manrope,sans-serif;font-size:24px;margin:0 0 5px}
+.quick-card p{color:var(--muted);margin-top:0}
+.quick-table{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:16px}
+.quick-item{border:1px solid var(--line);background:#fff;padding:13px;border-radius:13px}
+.quick-item span{display:block;font-size:13px;color:var(--muted);font-weight:700}
+.quick-item b{display:block;margin-top:2px;font-size:17px}
+.currency-note{margin-top:20px;padding:14px 16px;border-radius:13px;background:#fff8e6;border:1px solid #f0df9d;color:#6a5311;font-size:14px}
+.popular{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px;justify-content:center}
+.popular button{width:auto!important;margin:0!important;padding:9px 12px!important;font-size:13px;box-shadow:none}
+.currency-footer-note{font-size:13px;color:var(--muted);text-align:center;margin-top:14px}
+@media(max-width:700px){
+  .converter-card{padding:21px}
+  .converter-top h2{font-size:29px}
+  .amount-row{grid-template-columns:1fr}
+  .quick-table{grid-template-columns:repeat(2,1fr)}
+  .currency-menu{position:fixed;left:14px;right:14px;top:15%;max-height:70vh;overflow:auto}
+}
 </style>
 </head>
 <body>
@@ -18,19 +71,66 @@
 </header>
 <main>
 <section class="toolhero"><div class="wrap"><p class="eyebrow" style="color:#9fd0f5">FREE TOOL</p><h1>Currency Converter</h1><p>Convert between KWD and popular currencies used by Kuwait residents, families and newcomers.</p></div></section>
-<div class="toolpage"><div class="breadcrumbs"><a href="../../index.html">Home</a> / <a href="../calculators.html">Calculators</a> / Currency Converter</div>
+<div class="toolpage">
+<div class="breadcrumbs"><a href="../../index.html">Home</a> / <a href="../calculators.html">Calculators</a> / Currency Converter</div>
 <div class="toolbox currency-tool">
   <div class="notice">This calculator uses reference exchange rates for planning. Rates can change, so verify the final rate with your bank or official provider before sending or exchanging money.</div>
   <article class="card converter-card">
-    <div class="converter-top"><h2>Convert your currency</h2><p>Choose the countries or currencies you want to convert between.</p><div class="rate-line" id="pairRate">1 KWD = 311.59 INR</div></div>
-    <div class="converter-grid">
-      <div><label class="field-title" for="amount">Amount</label><div class="currency-field"><input id="amount" type="number" min="0" step="0.01" value="1"><select id="fromCurrency" aria-label="From currency"></select></div></div>
-      <button class="swap" id="swapCurrencies" type="button" aria-label="Swap currencies">⇅</button>
-      <div><label class="field-title" for="toCurrency">Converted to</label><div class="currency-field"><input id="convertedAmount" type="text" readonly><select id="toCurrency" aria-label="To currency"></select></div></div>
+    <div class="converter-top">
+      <h2>Convert your currency</h2>
+      <p>Choose currencies, enter an amount and get a quick conversion estimate.</p>
+      <div class="rate-line" id="pairRate">1 KWD = 311.59 INR</div>
     </div>
+
+    <div class="converter-stack">
+      <div>
+        <label class="field-title" for="amount">Amount</label>
+        <div class="amount-row">
+          <input class="amount-input" id="amount" type="number" min="0" step="0.01" value="1">
+          <div class="currency-picker" id="fromPicker">
+            <button class="currency-trigger" type="button" aria-expanded="false">
+              <span class="selected-left"><span class="flag" id="fromFlag">🇰🇼</span><span><span class="code" id="fromCode">KWD</span><span class="selected-name" id="fromName"></span></span></span>
+              <span class="chevron">⌄</span>
+            </button>
+            <div class="currency-menu">
+              <div class="currency-search-wrap"><span class="search-icon">⌕</span><input class="currency-search" placeholder="Search currencies" autocomplete="off"></div>
+              <div class="currency-options"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="swap-wrap"><button class="swap" id="swapCurrencies" type="button" aria-label="Swap currencies">⇅</button></div>
+
+      <div>
+        <label class="field-title" for="convertedAmount">Converted to</label>
+        <div class="amount-row">
+          <input class="amount-input" id="convertedAmount" type="text" readonly>
+          <div class="currency-picker" id="toPicker">
+            <button class="currency-trigger" type="button" aria-expanded="false">
+              <span class="selected-left"><span class="flag" id="toFlag">🇮🇳</span><span><span class="code" id="toCode">INR</span><span class="selected-name" id="toName"></span></span></span>
+              <span class="chevron">⌄</span>
+            </button>
+            <div class="currency-menu">
+              <div class="currency-search-wrap"><span class="search-icon">⌕</span><input class="currency-search" placeholder="Search currencies" autocomplete="off"></div>
+              <div class="currency-options"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="result-box"><div class="result-label">CONVERSION RESULT</div><div class="result-number" id="resultText">1 KWD = 311.59 INR</div><div class="result-sub" id="resultSub">Reference rate used for planning</div></div>
-    <div class="popular" aria-label="Popular target currencies"><button type="button" data-target="INR">🇮🇳 India INR</button><button type="button" data-target="USD">🇺🇸 USA USD</button><button type="button" data-target="AED">🇦🇪 UAE AED</button><button type="button" data-target="PHP">🇵🇭 Philippines PHP</button><button type="button" data-target="PKR">🇵🇰 Pakistan PKR</button><button type="button" data-target="BDT">🇧🇩 Bangladesh BDT</button></div>
+    <div class="popular" aria-label="Popular target currencies">
+      <button type="button" data-target="INR">🇮🇳 India INR</button>
+      <button type="button" data-target="USD">🇺🇸 USA USD</button>
+      <button type="button" data-target="AED">🇦🇪 UAE AED</button>
+      <button type="button" data-target="PHP">🇵🇭 Philippines PHP</button>
+      <button type="button" data-target="PKR">🇵🇰 Pakistan PKR</button>
+      <button type="button" data-target="BDT">🇧🇩 Bangladesh BDT</button>
+    </div>
   </article>
+
   <article class="card quick-card"><h3>Quick conversions</h3><p id="quickIntro">Popular amounts using the selected currency pair.</p><div class="quick-table" id="quickTable"></div></article>
   <div class="currency-note"><b>Important:</b> These values are reference estimates, not guaranteed live exchange rates. Bank fees, transfer fees and provider margins can change the final amount you receive.</div>
   <p class="currency-footer-note">Supported popular currencies can be expanded later with a live exchange-rate API.</p>
@@ -41,31 +141,78 @@
 <script src="../../assets/js/app.js"></script>
 <script>
 const currencies=[
- {code:'KWD',country:'🇰🇼 Kuwait',name:'Kuwaiti Dinar',rate:1},
- {code:'INR',country:'🇮🇳 India',name:'Indian Rupee',rate:311.59},
- {code:'USD',country:'🇺🇸 United States',name:'US Dollar',rate:3.25},
- {code:'EUR',country:'🇪🇺 Eurozone',name:'Euro',rate:2.98},
- {code:'GBP',country:'🇬🇧 United Kingdom',name:'Pound Sterling',rate:2.56},
- {code:'AED',country:'🇦🇪 United Arab Emirates',name:'UAE Dirham',rate:11.94},
- {code:'SAR',country:'🇸🇦 Saudi Arabia',name:'Saudi Riyal',rate:12.20},
- {code:'QAR',country:'🇶🇦 Qatar',name:'Qatari Riyal',rate:11.83},
- {code:'BHD',country:'🇧🇭 Bahrain',name:'Bahraini Dinar',rate:1.22},
- {code:'OMR',country:'🇴🇲 Oman',name:'Omani Rial',rate:0.99},
- {code:'PHP',country:'🇵🇭 Philippines',name:'Philippine Peso',rate:188.50},
- {code:'PKR',country:'🇵🇰 Pakistan',name:'Pakistani Rupee',rate:906.00},
- {code:'BDT',country:'🇧🇩 Bangladesh',name:'Bangladeshi Taka',rate:396.00},
- {code:'NPR',country:'🇳🇵 Nepal',name:'Nepalese Rupee',rate:498.50},
- {code:'EGP',country:'🇪🇬 Egypt',name:'Egyptian Pound',rate:154.00}
+ {code:'KWD',flag:'🇰🇼',country:'Kuwait',name:'Kuwaiti Dinar',rate:1},
+ {code:'INR',flag:'🇮🇳',country:'India',name:'Indian Rupee',rate:311.59},
+ {code:'USD',flag:'🇺🇸',country:'United States',name:'US Dollar',rate:3.25},
+ {code:'EUR',flag:'🇪🇺',country:'Eurozone',name:'Euro',rate:2.98},
+ {code:'GBP',flag:'🇬🇧',country:'United Kingdom',name:'British Pound Sterling',rate:2.56},
+ {code:'AED',flag:'🇦🇪',country:'United Arab Emirates',name:'UAE Dirham',rate:11.94},
+ {code:'SAR',flag:'🇸🇦',country:'Saudi Arabia',name:'Saudi Riyal',rate:12.20},
+ {code:'QAR',flag:'🇶🇦',country:'Qatar',name:'Qatari Riyal',rate:11.83},
+ {code:'BHD',flag:'🇧🇭',country:'Bahrain',name:'Bahraini Dinar',rate:1.22},
+ {code:'OMR',flag:'🇴🇲',country:'Oman',name:'Omani Rial',rate:0.99},
+ {code:'PHP',flag:'🇵🇭',country:'Philippines',name:'Philippine Peso',rate:188.50},
+ {code:'PKR',flag:'🇵🇰',country:'Pakistan',name:'Pakistani Rupee',rate:906.00},
+ {code:'BDT',flag:'🇧🇩',country:'Bangladesh',name:'Bangladeshi Taka',rate:396.00},
+ {code:'NPR',flag:'🇳🇵',country:'Nepal',name:'Nepalese Rupee',rate:498.50},
+ {code:'EGP',flag:'🇪🇬',country:'Egypt',name:'Egyptian Pound',rate:154.00},
+ {code:'CAD',flag:'🇨🇦',country:'Canada',name:'Canadian Dollar',rate:4.42},
+ {code:'AUD',flag:'🇦🇺',country:'Australia',name:'Australian Dollar',rate:4.92},
+ {code:'CHF',flag:'🇨🇭',country:'Switzerland',name:'Swiss Franc',rate:2.61},
+ {code:'JPY',flag:'🇯🇵',country:'Japan',name:'Japanese Yen',rate:485},
+ {code:'CNY',flag:'🇨🇳',country:'China',name:'Chinese Yuan',rate:23.45},
+ {code:'TRY',flag:'🇹🇷',country:'Turkey',name:'Turkish Lira',rate:106.5}
 ];
-const el=id=>document.getElementById(id); const amountEl=el('amount'), fromEl=el('fromCurrency'), toEl=el('toCurrency'), convertedEl=el('convertedAmount');
-const fmt=(value,max=2)=>new Intl.NumberFormat('en-US',{maximumFractionDigits:max}).format(value);
-function populate(select){currencies.forEach(c=>{const o=document.createElement('option');o.value=c.code;o.textContent=`${c.country} — ${c.code} (${c.name})`;select.appendChild(o)})}
-populate(fromEl); populate(toEl); fromEl.value='KWD'; toEl.value='INR';
-function get(code){return currencies.find(c=>c.code===code)}
-function convert(){const amount=Math.max(0,Number(amountEl.value)||0), from=get(fromEl.value), to=get(toEl.value), pair=to.rate/from.rate, converted=amount*pair;convertedEl.value=fmt(converted,4);el('pairRate').textContent=`1 ${from.code} = ${fmt(pair,6)} ${to.code}`;el('resultText').textContent=`${fmt(amount,4)} ${from.code} = ${fmt(converted,4)} ${to.code}`;el('resultSub').textContent=`${from.name} → ${to.name} • reference rate for planning`;el('quickIntro').textContent=`Popular ${from.code} amounts converted to ${to.code}.`;const amounts=[1,5,10,50,100,500,1000];el('quickTable').innerHTML=amounts.map(v=>`<div class="quick-item"><span>${fmt(v)} ${from.code}</span><b>${fmt(v*pair,4)} ${to.code}</b></div>`).join('')}
-amountEl.addEventListener('input',convert);fromEl.addEventListener('change',convert);toEl.addEventListener('change',convert);
-el('swapCurrencies').addEventListener('click',()=>{const current=fromEl.value;fromEl.value=toEl.value;toEl.value=current;convert()});
-document.querySelectorAll('[data-target]').forEach(btn=>btn.addEventListener('click',()=>{toEl.value=btn.dataset.target;convert()}));
+const el=id=>document.getElementById(id);
+const amountEl=el('amount'), convertedEl=el('convertedAmount');
+let fromCode='KWD', toCode='INR';
+const fmt=(value,max=4)=>new Intl.NumberFormat('en-US',{maximumFractionDigits:max}).format(value);
+const get=code=>currencies.find(c=>c.code===code);
+
+function updatePicker(type){
+ const c=get(type==='from'?fromCode:toCode);
+ el(type+'Flag').textContent=c.flag;
+ el(type+'Code').textContent=c.code;
+ el(type+'Name').textContent=' — '+c.name;
+ document.querySelectorAll('#'+type+'Picker .currency-option').forEach(b=>b.classList.toggle('active',b.dataset.code===c.code));
+}
+function renderOptions(picker,type,query=''){
+ const q=query.trim().toLowerCase();
+ const list=currencies.filter(c=>!q || `${c.code} ${c.country} ${c.name}`.toLowerCase().includes(q));
+ const box=picker.querySelector('.currency-options');
+ box.innerHTML=list.map(c=>`<button type="button" class="currency-option" data-code="${c.code}"><span class="option-flag">${c.flag}</span><span class="option-code">${c.code}</span><span class="option-name">${c.name}</span></button>`).join('') || '<div style="padding:14px;color:#65727d">No currency found</div>';
+ box.querySelectorAll('.currency-option').forEach(btn=>btn.addEventListener('click',()=>{
+   if(type==='from') fromCode=btn.dataset.code; else toCode=btn.dataset.code;
+   updatePicker(type); closeAll(); convert();
+ }));
+}
+function closeAll(){document.querySelectorAll('.currency-picker').forEach(p=>{p.classList.remove('open');p.querySelector('.currency-trigger').setAttribute('aria-expanded','false')})}
+function setupPicker(type){
+ const picker=el(type+'Picker'), trigger=picker.querySelector('.currency-trigger'), search=picker.querySelector('.currency-search');
+ renderOptions(picker,type);
+ trigger.addEventListener('click',()=>{
+   const opening=!picker.classList.contains('open'); closeAll();
+   if(opening){picker.classList.add('open');trigger.setAttribute('aria-expanded','true');search.value='';renderOptions(picker,type);setTimeout(()=>search.focus(),20)}
+ });
+ search.addEventListener('input',()=>renderOptions(picker,type,search.value));
+}
+function convert(){
+ const amount=Math.max(0,Number(amountEl.value)||0), from=get(fromCode), to=get(toCode), pair=to.rate/from.rate, converted=amount*pair;
+ convertedEl.value=fmt(converted,4);
+ el('pairRate').textContent=`1 ${from.code} = ${fmt(pair,6)} ${to.code}`;
+ el('resultText').textContent=`${fmt(amount,4)} ${from.code} = ${fmt(converted,4)} ${to.code}`;
+ el('resultSub').textContent=`${from.name} → ${to.name} • reference rate for planning`;
+ el('quickIntro').textContent=`Popular ${from.code} amounts converted to ${to.code}.`;
+ const amounts=[1,5,10,50,100,500,1000];
+ el('quickTable').innerHTML=amounts.map(v=>`<div class="quick-item"><span>${fmt(v)} ${from.code}</span><b>${fmt(v*pair,4)} ${to.code}</b></div>`).join('');
+}
+setupPicker('from'); setupPicker('to'); updatePicker('from'); updatePicker('to');
+amountEl.addEventListener('input',convert);
+el('swapCurrencies').addEventListener('click',()=>{[fromCode,toCode]=[toCode,fromCode];updatePicker('from');updatePicker('to');convert()});
+document.querySelectorAll('[data-target]').forEach(btn=>btn.addEventListener('click',()=>{toCode=btn.dataset.target;updatePicker('to');convert()}));
+document.addEventListener('click',e=>{if(!e.target.closest('.currency-picker')) closeAll()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape') closeAll()});
 convert();
 </script>
-</body></html>
+</body>
+</html>
