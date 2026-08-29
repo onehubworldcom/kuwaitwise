@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-# Sitemap URL will be updated to the final custom domain before launch.
+Sitemap: https://kuwaitwise.com/sitemap.xml
