@@ -1,0 +1,1 @@
+Before connecting Google Search Console to the final custom domain, replace kuwaitwise.onrender.com with your final domain in sitemap.xml and all rel="canonical" URLs. Then add the absolute sitemap URL to robots.txt.
